@@ -12,7 +12,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
   },
-  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg', '**/*.webp'],
+  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg', '**/*.webp', '**/*.ico'],
   resolve: {
     alias: {
       '@': '/src',

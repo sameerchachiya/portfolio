@@ -39,11 +39,9 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-8"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Hi, I'm{' '}
-                <span className="text-gradient">
-                  Sameer Chachiya
-                </span>
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 whitespace-nowrap inline-flex items-center">
+                <span>Hi, I'm </span>
+                <span className="text-gradient ml-2">Sameer Chachiya</span>
               </h1>
               <h2 className="text-2xl md:text-3xl text-foreground/80 mb-6">
                 Software Engineer
