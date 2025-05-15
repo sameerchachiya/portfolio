@@ -1,8 +1,24 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import Typed from 'typed.js';
 
 const Hero = () => {
   const [imageError, setImageError] = useState(false);
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ["Sameer Chachiya"],
+      typeSpeed: 50,
+      backSpeed: 50,
+      cursorChar: '|',
+      loop: false
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
 
   return (
     <section id="home" className="min-h-screen flex items-center">
@@ -39,9 +55,9 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-8"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 whitespace-nowrap inline-flex items-center">
-                <span>Hi, I'm </span>
-                <span className="text-gradient ml-2">Sameer Chachiya</span>
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 whitespace-nowrap">
+                <span className="text-foreground">Hi, I'm </span>
+                <span ref={el} className="text-primary inline-flex items-center"></span>
               </h1>
               <h2 className="text-2xl md:text-3xl text-foreground/80 mb-6">
                 Software Engineer
