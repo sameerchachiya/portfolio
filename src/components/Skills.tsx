@@ -2,20 +2,56 @@ import { motion } from 'framer-motion';
 
 const skills = [
   {
-    category: 'Frontend',
-    items: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'HTML5/CSS3', 'JavaScript (ES6+)'],
+    category: 'Languages & Frameworks',
+    items: [
+      'Java',
+      'Spring Boot',
+      'ReactJS',
+      'AngularJS',
+      'JavaScript',
+      'Groovy',
+      'HTML',
+      'CSS'
+    ],
   },
   {
-    category: 'Backend',
-    items: ['Java', 'Spring Boot', 'Node.js', 'Express.js', 'RESTful APIs', 'GraphQL'],
+    category: 'Cloud & DevOps',
+    items: [
+      'AWS',
+      'Docker',
+      'Jenkins',
+      'Git',
+      'Maven',
+      'Gradle',
+      'Microservices',
+      'REST API'
+    ],
   },
   {
-    category: 'Database',
-    items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Elasticsearch'],
+    category: 'Databases & Tools',
+    items: [
+      'PostgreSQL',
+      'MySQL',
+      'NoSQL',
+      'Kafka',
+      'Splunk',
+      'Jira',
+      'LeetCode',
+      'Generative AI'
+    ],
   },
   {
-    category: 'DevOps & Tools',
-    items: ['Git', 'Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Jenkins'],
+    category: 'Core Competencies',
+    items: [
+      'Data Structures',
+      'Algorithm Design',
+      'Design Patterns',
+      'Problem Solving',
+      'Critical Thinking',
+      'Agile',
+      'Artificial Intelligence',
+      'System Design'
+    ],
   },
 ];
 
@@ -32,7 +68,7 @@ const Skills = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            A comprehensive list of my technical skills and technologies I work with.
+            A comprehensive overview of my technical expertise and core competencies.
           </p>
         </motion.div>
 
@@ -44,7 +80,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card rounded-lg p-6 shadow-lg border border-border"
+              className="bg-card rounded-lg p-6 shadow-lg border border-border hover:shadow-xl transition-shadow duration-300"
             >
               <h3 className="text-xl font-semibold mb-4 text-primary">
                 {skillGroup.category}
@@ -57,7 +93,7 @@ const Skills = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 + i * 0.1 }}
-                    className="flex items-center text-foreground/70"
+                    className="flex items-center text-foreground/70 hover:text-primary transition-colors duration-200"
                   >
                     <svg
                       className="w-4 h-4 mr-2 text-primary"

@@ -1,68 +1,53 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+interface FormStatus {
+  type: 'idle' | 'loading' | 'success' | 'error';
+  message: string;
+}
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [status, setStatus] = useState<FormStatus>({ type: 'idle', message: '' });
 
-  const [status, setStatus] = useState({
-    type: '',
-    message: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus({ type: 'loading', message: 'Sending...' });
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    setStatus({ type: 'loading', message: 'Sending message...' });
 
     try {
-      // Replace with your actual form submission logic
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
         method: 'POST',
+        body: formData,
         headers: {
-          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
-        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setStatus({
-          type: 'success',
-          message: 'Message sent successfully!',
-        });
-        setFormData({ name: '', email: '', message: '' });
+        setStatus({ type: 'success', message: 'Message sent successfully!' });
+        form.reset();
       } else {
         throw new Error('Failed to send message');
       }
     } catch (error) {
-      setStatus({
-        type: 'error',
-        message: 'Failed to send message. Please try again.',
-      });
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
     }
   };
 
   return (
     <section id="contact" className="py-16 md:py-20 bg-secondary/5">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Get in Touch</h2>
+          <p className="text-foreground/70 max-w-md mx-auto text-sm">
             Have a question or want to work together? Feel free to reach out!
           </p>
         </motion.div>
@@ -72,58 +57,44 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-card rounded-lg p-8 shadow-lg border border-border"
+          className="bg-card rounded-lg p-6 shadow-lg border border-border"
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground/90 mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-              />
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                />
+              </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground/90 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground/90 mb-2">
-                Message
-              </label>
               <textarea
-                id="message"
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
+                placeholder="Your Message"
                 required
                 rows={4}
-                className="w-full px-4 py-2 rounded-md border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none"
               />
             </div>
 
             <div>
               <button
                 type="submit"
-                className="w-full button-gradient text-white font-medium py-3 rounded-md hover:shadow-lg transition-all"
+                className="w-full button-gradient text-white font-medium py-2.5 rounded-md hover:shadow-lg transition-all text-sm"
                 disabled={status.type === 'loading'}
               >
                 {status.type === 'loading' ? 'Sending...' : 'Send Message'}
@@ -134,7 +105,7 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`text-center p-4 rounded-md ${
+                className={`text-center p-3 rounded-md text-sm ${
                   status.type === 'success'
                     ? 'bg-green-100 text-green-800'
                     : status.type === 'error'
@@ -153,14 +124,27 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 text-center"
+          className="mt-6 text-center"
         >
-          <p className="text-foreground/70 mb-4">Or reach out directly:</p>
+          <p className="text-foreground/70 text-sm mb-2">Or reach out directly:</p>
           <a
-            href="mailto:sameer.chachiya@example.com"
-            className="text-primary hover:underline"
+            href="mailto:sameerchachiya11@gmail.com"
+            className="text-primary hover:underline text-sm inline-flex items-center"
           >
-            sameer.chachiya@example.com
+            <svg 
+              className="w-4 h-4 mr-2" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
+              />
+            </svg>
+            sameerchachiya11@gmail.com
           </a>
         </motion.div>
       </div>
