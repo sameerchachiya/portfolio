@@ -21,16 +21,16 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center">
-      <div className="container mx-auto px-4 py-16 md:py-0">
-        <div className="flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-16">
+    <section id="home" className="min-h-screen flex items-center overflow-hidden">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="md:flex-shrink-0 md:w-1/2"
+            className="md:w-5/12"
           >
-            <div className="w-80 h-80 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] rounded-full overflow-hidden border-4 border-primary/20 shadow-xl mx-auto">
+            <div className="w-64 h-64 md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden border-4 border-primary/20 shadow-xl mx-auto">
               <img 
                 src={new URL('../assets/sam_pic_converted.jpg', import.meta.url).href}
                 alt="Sameer Chachiya" 
@@ -48,21 +48,21 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          <div className="flex flex-col md:text-left text-center md:w-1/2">
+          <div className="flex flex-col md:text-left text-center md:w-7/12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mb-8"
+              className="mb-6"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 whitespace-nowrap">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3">
                 <span className="text-foreground">Hi, I'm </span>
                 <span ref={el} className="text-primary inline-flex items-center"></span>
               </h1>
-              <h2 className="text-2xl md:text-3xl text-foreground/80 mb-6">
+              <h2 className="text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-4">
                 Software Engineer
               </h2>
-              <p className="text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed">
+              <p className="text-sm md:text-base lg:text-lg text-foreground/70 max-w-2xl leading-relaxed">
                 Results-driven software engineer with 4 years of experience in Full-Stack Development building scalable systems. Skilled in
                 optimising processes, reducing overhead, and delivering high-quality solutions.
               </p>
@@ -72,17 +72,17 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap md:justify-start justify-center gap-4"
+              className="flex flex-wrap md:justify-start justify-center gap-3 md:gap-4"
             >
               <a
                 href="#contact"
-                className="button-gradient px-8 py-3 rounded-full text-white font-medium hover:shadow-lg transition-all"
+                className="button-gradient px-6 py-2.5 rounded-full text-white font-medium hover:shadow-lg transition-all text-sm md:text-base"
               >
                 Get in Touch
               </a>
               <a
                 href="#projects"
-                className="px-8 py-3 rounded-full border border-primary text-primary hover:bg-primary/10 transition-all"
+                className="px-6 py-2.5 rounded-full border border-primary text-primary hover:bg-primary/10 transition-all text-sm md:text-base"
               >
                 View Projects
               </a>
@@ -92,7 +92,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-12 flex justify-center md:justify-start space-x-6"
+              className="mt-8 flex justify-center md:justify-start space-x-6"
             >
               <a
                 href="https://github.com/sameerchachiya"
