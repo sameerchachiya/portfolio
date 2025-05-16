@@ -14,6 +14,7 @@ const Navbar = () => {
     { title: 'Hackathon', href: '#hackathon' },
     { title: 'Education', href: '#education' },
     { title: 'Contact', href: '#contact' },
+    { title: 'Resume', href: '/projects/SameerChachiya_Resume_FullStack.pdf', external: true },
   ];
 
   return (
@@ -35,15 +36,29 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               {menuItems.map((item) => (
-                <motion.a
-                  key={item.title}
-                  href={item.href}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-foreground/90 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {item.title}
-                </motion.a>
+                item.external ? (
+                  <motion.a
+                    key={item.title}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-foreground/90 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.title}
+                  </motion.a>
+                ) : (
+                  <motion.a
+                    key={item.title}
+                    href={item.href}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-foreground/90 hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.title}
+                  </motion.a>
+                )
               ))}
               
               <motion.button
@@ -166,14 +181,27 @@ const Navbar = () => {
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {menuItems.map((item) => (
-            <a
-              key={item.title}
-              href={item.href}
-              className="text-foreground/90 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.title}
-            </a>
+            item.external ? (
+              <a
+                key={item.title}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground/90 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.title}
+              </a>
+            ) : (
+              <a
+                key={item.title}
+                href={item.href}
+                className="text-foreground/90 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.title}
+              </a>
+            )
           ))}
         </div>
       </motion.div>
