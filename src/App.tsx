@@ -11,7 +11,12 @@ import Hackathon from './components/Hackathon';
 function App() {
   return (
     <ThemeProvider>
-      <div className="bg-background text-foreground min-h-screen">
+      <div
+        className="text-foreground min-h-screen w-full"
+        style={{
+          background: 'linear-gradient(180deg, #ffffff 0%, #e3f0ff 50%, #ffffff 100%)',
+        }}
+      >
         <Navbar />
         <main>
           <Hero />
