@@ -15,8 +15,7 @@ const experiences = [
       'Led a team of 2 developers as a secondary lead, assisting in 5+ code reviews and 2+ key feature deliveries per sprint',
       'Resolved 50+ UI-related bugs and maintained 10+ backend services, reducing UI load times by 20%',
       'Migrated an existing application from Angular to React.js, currently 60% complete',
-      'Optimized SQL queries, improving database performance by 30% through referential integrity enforcement',
-      'Hackathon: Designed and developed a pioneering application from PoC to deployment, improving anomaly detection accuracy by 30%'
+      'Optimized SQL queries, improving database performance by 30% through referential integrity enforcement'
     ],
   },
   {
@@ -32,8 +31,7 @@ const experiences = [
       'Actively participated in 100+ code reviews to ensure code quality and system stability',
       'Provided Tier 2 support for 8+ applications (break fixes and data changes)',
       'Containerized applications into Docker images, optimizing server utilization and reducing cloud costs',
-      'Developed 150+ unit test cases and utilized Postman for comprehensive API testing',
-      'Won hackathon: Automated CVE vulnerability fixes, reducing engineering time from 14 hours to 30 minutes per CVE'
+      'Developed 150+ unit test cases and utilized Postman for comprehensive API testing'
     ],
   },
 ];
