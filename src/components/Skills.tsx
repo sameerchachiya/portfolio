@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+import { FaJava, FaReact, FaAngular, FaJs, FaHtml5, FaCss3Alt, FaAws, FaDocker, FaJenkins, FaGitAlt, FaDatabase, FaPython, FaNodeJs, FaCloud, FaTools, FaCogs, FaBrain, FaProjectDiagram } from 'react-icons/fa';
+import { SiSpring, SiMan, SiGradle, SiPostgresql, SiMysql, SiApachekafka, SiSplunk, SiJira, SiLeetcode, SiRubyonrails } from 'react-icons/si';
+import { MdOutlineApi } from 'react-icons/md';
 
 const skills = [
   {
@@ -55,6 +58,41 @@ const skills = [
   },
 ];
 
+const skillIcons: { [key: string]: JSX.Element } = {
+  Java: <FaJava className="w-5 h-5 mr-2 text-primary" />,
+  'Spring Boot': <SiSpring className="w-5 h-5 mr-2 text-primary" />,
+  ReactJS: <FaReact className="w-5 h-5 mr-2 text-primary" />,
+  AngularJS: <FaAngular className="w-5 h-5 mr-2 text-primary" />,
+  JavaScript: <FaJs className="w-5 h-5 mr-2 text-primary" />,
+  Groovy: <FaTools className="w-5 h-5 mr-2 text-primary" />,
+  HTML: <FaHtml5 className="w-5 h-5 mr-2 text-primary" />,
+  CSS: <FaCss3Alt className="w-5 h-5 mr-2 text-primary" />,
+  AWS: <FaAws className="w-5 h-5 mr-2 text-primary" />,
+  Docker: <FaDocker className="w-5 h-5 mr-2 text-primary" />,
+  Jenkins: <FaJenkins className="w-5 h-5 mr-2 text-primary" />,
+  Git: <FaGitAlt className="w-5 h-5 mr-2 text-primary" />,
+  Maven: <SiMan className="w-5 h-5 mr-2 text-primary" />,
+  Gradle: <SiGradle className="w-5 h-5 mr-2 text-primary" />,
+  Microservices: <FaCogs className="w-5 h-5 mr-2 text-primary" />,
+  'REST API': <MdOutlineApi className="w-5 h-5 mr-2 text-primary" />,
+  PostgreSQL: <SiPostgresql className="w-5 h-5 mr-2 text-primary" />,
+  MySQL: <SiMysql className="w-5 h-5 mr-2 text-primary" />,
+  NoSQL: <FaDatabase className="w-5 h-5 mr-2 text-primary" />,
+  Kafka: <SiApachekafka className="w-5 h-5 mr-2 text-primary" />,
+  Splunk: <SiSplunk className="w-5 h-5 mr-2 text-primary" />,
+  Jira: <SiJira className="w-5 h-5 mr-2 text-primary" />,
+  LeetCode: <SiLeetcode className="w-5 h-5 mr-2 text-primary" />,
+  'Generative AI': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  'Data Structures': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
+  'Algorithm Design': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
+  'Design Patterns': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
+  'Problem Solving': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  'Critical Thinking': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  Agile: <FaCogs className="w-5 h-5 mr-2 text-primary" />,
+  'Artificial Intelligence': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  'System Design': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
+};
+
 const Skills = () => {
   return (
     <section id="skills" className="py-16 md:py-20 bg-secondary/5">
@@ -95,19 +133,7 @@ const Skills = () => {
                     transition={{ duration: 0.3, delay: index * 0.1 + i * 0.1 }}
                     className="flex items-center text-foreground/70 hover:text-primary transition-colors duration-200"
                   >
-                    <svg
-                      className="w-4 h-4 mr-2 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4"
-                      />
-                    </svg>
+                    {skillIcons[skill] || <FaTools className="w-5 h-5 mr-2 text-primary" />}
                     {skill}
                   </motion.li>
                 ))}
