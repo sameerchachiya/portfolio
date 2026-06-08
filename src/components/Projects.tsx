@@ -19,45 +19,42 @@ interface ProjectCardProps {
 const projects: Project[] = [
   {
     title: 'IT Service Management System',
-    description: 'A comprehensive internal ticketing system that streamlines IT support processes. Employees can create tickets for technical issues, while administrators can efficiently manage and assign them to service engineers.',
-    technologies: ['Spring Boot', 'ReactJS', 'PostgreSQL', 'REST API', 'Docker'],
+    description: 'Internal IT service management system that empowers employees to create tickets for any issue, streamlining resolution for both users and administrators.',
+    technologies: ['Spring Boot', 'React', 'PostgreSQL', 'REST API', 'Full Stack'],
     highlights: [
-      'Spearheaded full-stack development of an internal IT service management system',
-      'Enhanced UI with intuitive interface for ticket management',
-      'Implemented seamless ticket assignment system for administrators',
-      'Improved operational efficiency through streamlined issue resolution process'
+      'Spearheaded development of an internal IT service management system',
+      'Built an intuitive admin interface to seamlessly assign tickets to service engineers',
+      'Facilitated prompt resolution of technical issues and improved operational efficiency',
     ],
     image: '/projects/itsm-system.png',
     github: 'https://github.com/sameerchachiya/itsm-system',
     demo: 'https://itsm-demo.sameerchachiya.com'
   },
   {
-    title: 'Health Insurance Cost Prediction',
-    description: 'A machine learning application that predicts health insurance costs using supervised learning techniques. The system employs Random Forest and Regression strategies for accurate cost estimation.',
-    technologies: ['Python', 'Flask', 'Machine Learning', 'Random Forest', 'Regression', 'scikit-learn'],
+    title: 'AI Log Analyser',
+    description: 'AI-powered log analysis tool that uses vector search and LLM inference to diagnose production issues from uploaded logs.',
+    technologies: ['Python', 'Vector Search', 'LLM', 'RAG', 'LangChain'],
     highlights: [
-      'Developed a Supervised Learning model for insurance cost prediction',
-      'Implemented Random Forest model and Regression strategy for enhanced accuracy',
-      'Created a web application using Flask framework',
-      'Integrated ML model with user-friendly interface'
+      'Upload logs and receive root cause, potential cause, and solution recommendations',
+      'Built vector search pipeline for semantic log retrieval',
+      'Integrated LLM inference for intelligent root cause analysis',
+    ],
+    image: '/projects/ai-log-analyser.png',
+    github: 'https://github.com/sameerchachiya',
+    demo: '#'
+  },
+  {
+    title: 'Health Insurance Cost Prediction',
+    description: 'Machine learning application using Random Forest and Regression supervised learning to predict health insurance costs, deployed as a Flask web app.',
+    technologies: ['Python', 'Flask', 'Random Forest', 'Regression', 'scikit-learn', 'Machine Learning'],
+    highlights: [
+      'Developed Random Forest + Regression supervised learning model for cost prediction',
+      'Deployed as a Flask web application with user-friendly interface',
+      'Applied ML techniques for accurate insurance cost estimation',
     ],
     image: '/projects/health-insurance.png',
     github: 'https://github.com/sameerchachiya/health-insurance-predictor',
     demo: 'https://insurance-predictor.sameerchachiya.com'
-  },
-  {
-    title: 'Portfolio Website',
-    description: 'A modern, responsive portfolio website built with React and Tailwind CSS. Features dark/light mode, smooth animations, and a clean, professional design.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite'],
-    highlights: [
-      'Implemented responsive design with modern UI/UX principles',
-      'Created smooth animations and transitions using Framer Motion',
-      'Integrated dark/light mode with theme persistence',
-      'Optimized performance and accessibility'
-    ],
-    image: '/projects/portfolio.png',
-    github: 'https://github.com/sameerchachiya/portfolio',
-    demo: 'https://sameerchachiya.com'
   }
 ];
 

@@ -1,96 +1,132 @@
 import { motion } from 'framer-motion';
-import { FaJava, FaReact, FaAngular, FaJs, FaHtml5, FaCss3Alt, FaAws, FaDocker, FaJenkins, FaGitAlt, FaDatabase, FaPython, FaNodeJs, FaCloud, FaTools, FaCogs, FaBrain, FaProjectDiagram } from 'react-icons/fa';
-import { SiSpring, SiMan, SiGradle, SiPostgresql, SiMysql, SiApachekafka, SiSplunk, SiJira, SiLeetcode, SiRubyonrails } from 'react-icons/si';
+import { FaJava, FaReact, FaJs, FaAws, FaDocker, FaJenkins, FaGitAlt, FaDatabase, FaPython, FaCogs, FaBrain, FaProjectDiagram, FaTools } from 'react-icons/fa';
+import { SiSpring, SiPostgresql, SiMysql, SiApachekafka, SiSplunk, SiTypescript, SiFastapi, SiRedis, SiKubernetes } from 'react-icons/si';
 import { MdOutlineApi } from 'react-icons/md';
 
 const skills = [
   {
+    category: 'AI',
+    items: [
+      'LangChain',
+      'LlamaIndex',
+      'LangGraph',
+      'HuggingFace',
+      'RAG',
+      'Vector Databases',
+      'Prompt Engineering',
+      'Agentic AI',
+      'MCP',
+      'AI Safety',
+    ],
+  },
+  {
     category: 'Languages & Frameworks',
     items: [
       'Java',
-      'Spring Boot',
-      'ReactJS',
-      'AngularJS',
+      'Python',
       'JavaScript',
-      'Groovy',
-      'HTML',
-      'CSS'
+      'TypeScript',
+      'Spring Boot',
+      'React',
+      'FastAPI',
+      'REST API',
+      'WebSockets',
+      'Redis',
     ],
   },
   {
     category: 'Cloud & DevOps',
     items: [
       'AWS',
+      'AWS Bedrock',
+      'Kafka',
       'Docker',
-      'Jenkins',
+      'Kubernetes',
       'Git',
-      'Maven',
-      'Gradle',
-      'Microservices',
-      'REST API'
+      'Jenkins',
+      'Splunk',
     ],
   },
   {
-    category: 'Databases & Tools',
+    category: 'Databases',
     items: [
       'PostgreSQL',
       'MySQL',
       'NoSQL',
-      'Kafka',
-      'Splunk',
-      'Jira',
-      'LeetCode',
-      'Generative AI'
+      'Qdrant',
+      'Pinecone',
+      'Chroma',
+    ],
+  },
+  {
+    category: 'Architecture',
+    items: [
+      'Microservices',
+      'Distributed Systems',
+      'System Design (HLD/LLD)',
+      'Design Patterns',
+      'Data Structures',
+      'Algorithm Design',
     ],
   },
   {
     category: 'Core Competencies',
     items: [
-      'Data Structures',
-      'Algorithm Design',
-      'Design Patterns',
       'Problem Solving',
       'Critical Thinking',
       'Agile',
-      'Artificial Intelligence',
-      'System Design'
+      'Technical Leading',
+      'Vibe Coding',
     ],
   },
 ];
 
 const skillIcons: { [key: string]: JSX.Element } = {
   Java: <FaJava className="w-5 h-5 mr-2 text-primary" />,
-  'Spring Boot': <SiSpring className="w-5 h-5 mr-2 text-primary" />,
-  ReactJS: <FaReact className="w-5 h-5 mr-2 text-primary" />,
-  AngularJS: <FaAngular className="w-5 h-5 mr-2 text-primary" />,
+  Python: <FaPython className="w-5 h-5 mr-2 text-primary" />,
   JavaScript: <FaJs className="w-5 h-5 mr-2 text-primary" />,
-  Groovy: <FaTools className="w-5 h-5 mr-2 text-primary" />,
-  HTML: <FaHtml5 className="w-5 h-5 mr-2 text-primary" />,
-  CSS: <FaCss3Alt className="w-5 h-5 mr-2 text-primary" />,
-  AWS: <FaAws className="w-5 h-5 mr-2 text-primary" />,
-  Docker: <FaDocker className="w-5 h-5 mr-2 text-primary" />,
-  Jenkins: <FaJenkins className="w-5 h-5 mr-2 text-primary" />,
-  Git: <FaGitAlt className="w-5 h-5 mr-2 text-primary" />,
-  Maven: <SiMan className="w-5 h-5 mr-2 text-primary" />,
-  Gradle: <SiGradle className="w-5 h-5 mr-2 text-primary" />,
-  Microservices: <FaCogs className="w-5 h-5 mr-2 text-primary" />,
+  TypeScript: <SiTypescript className="w-5 h-5 mr-2 text-primary" />,
+  'Spring Boot': <SiSpring className="w-5 h-5 mr-2 text-primary" />,
+  React: <FaReact className="w-5 h-5 mr-2 text-primary" />,
+  FastAPI: <SiFastapi className="w-5 h-5 mr-2 text-primary" />,
   'REST API': <MdOutlineApi className="w-5 h-5 mr-2 text-primary" />,
+  Redis: <SiRedis className="w-5 h-5 mr-2 text-primary" />,
+  AWS: <FaAws className="w-5 h-5 mr-2 text-primary" />,
+  Kafka: <SiApachekafka className="w-5 h-5 mr-2 text-primary" />,
+  Docker: <FaDocker className="w-5 h-5 mr-2 text-primary" />,
+  Kubernetes: <SiKubernetes className="w-5 h-5 mr-2 text-primary" />,
+  Git: <FaGitAlt className="w-5 h-5 mr-2 text-primary" />,
+  Jenkins: <FaJenkins className="w-5 h-5 mr-2 text-primary" />,
+  Splunk: <SiSplunk className="w-5 h-5 mr-2 text-primary" />,
   PostgreSQL: <SiPostgresql className="w-5 h-5 mr-2 text-primary" />,
   MySQL: <SiMysql className="w-5 h-5 mr-2 text-primary" />,
   NoSQL: <FaDatabase className="w-5 h-5 mr-2 text-primary" />,
-  Kafka: <SiApachekafka className="w-5 h-5 mr-2 text-primary" />,
-  Splunk: <SiSplunk className="w-5 h-5 mr-2 text-primary" />,
-  Jira: <SiJira className="w-5 h-5 mr-2 text-primary" />,
-  LeetCode: <SiLeetcode className="w-5 h-5 mr-2 text-primary" />,
-  'Generative AI': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  Microservices: <FaCogs className="w-5 h-5 mr-2 text-primary" />,
+  'Distributed Systems': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
+  'System Design (HLD/LLD)': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
+  'Design Patterns': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
   'Data Structures': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
   'Algorithm Design': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
-  'Design Patterns': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
   'Problem Solving': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
   'Critical Thinking': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
   Agile: <FaCogs className="w-5 h-5 mr-2 text-primary" />,
-  'Artificial Intelligence': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
-  'System Design': <FaProjectDiagram className="w-5 h-5 mr-2 text-primary" />,
+  'Technical Leading': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  LangChain: <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  LlamaIndex: <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  LangGraph: <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  HuggingFace: <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  RAG: <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  'Vector Databases': <FaDatabase className="w-5 h-5 mr-2 text-primary" />,
+  'Prompt Engineering': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  'Agentic AI': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  MCP: <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  'AI Safety': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
+  Qdrant: <FaDatabase className="w-5 h-5 mr-2 text-primary" />,
+  Pinecone: <FaDatabase className="w-5 h-5 mr-2 text-primary" />,
+  Chroma: <FaDatabase className="w-5 h-5 mr-2 text-primary" />,
+  'AWS Bedrock': <FaAws className="w-5 h-5 mr-2 text-primary" />,
+  WebSockets: <MdOutlineApi className="w-5 h-5 mr-2 text-primary" />,
+  'Vibe Coding': <FaBrain className="w-5 h-5 mr-2 text-primary" />,
 };
 
 const Skills = () => {
@@ -104,13 +140,13 @@ const Skills = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Skills</h2>
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and core competencies.
+            AI, full-stack engineering, cloud infrastructure, and enterprise architecture expertise.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skillGroup, index) => (
             <motion.div
               key={skillGroup.category}
@@ -130,7 +166,7 @@ const Skills = () => {
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 + i * 0.1 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 + i * 0.05 }}
                     className="flex items-center text-foreground/70 hover:text-primary transition-colors duration-200"
                   >
                     {skillIcons[skill] || <FaTools className="w-5 h-5 mr-2 text-primary" />}
@@ -146,4 +182,4 @@ const Skills = () => {
   );
 };
 
-export default Skills; 
+export default Skills;

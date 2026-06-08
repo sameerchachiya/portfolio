@@ -2,21 +2,11 @@ import { motion } from 'framer-motion';
 
 const educationData = [
   {
-    school: "Global Academy Of Technology",
-    degree: "Bachelor of Technology - BTech, Computer Engineering",
-    duration: "2017 - 2021",
-    board: "Board : Visvesvaraya Technological University"
+    school: 'Visvesvaraya Technological University (VTU)',
+    degree: 'B.E / B.Tech – Computer Science & Engineering',
+    duration: '2017 — 2021',
+    details: 'Global Academy of Technology, Bengaluru',
   },
-  {
-    school: "JAIN College",
-    degree: "pre-university, Science-PCMC",
-    duration: "2015 - 2017"
-  },
-  {
-    school: "Holy Angels High School",
-    degree: "X, ICSE",
-    duration: "2005 - 2015"
-  }
 ];
 
 const Education = () => {
@@ -31,11 +21,10 @@ const Education = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Education</h2>
-          <p className="text-foreground/70">My academic journey and qualifications</p>
+          <p className="text-foreground/70">Academic qualifications</p>
         </motion.div>
 
         <div className="relative">
-          {/* Timeline Line */}
           <div className="absolute left-8 h-full w-0.5 bg-primary/20"></div>
 
           <div className="space-y-8">
@@ -48,16 +37,16 @@ const Education = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="relative pl-16"
               >
-                {/* Timeline Dot */}
                 <div className="absolute left-6 top-1/2 w-4 h-4 bg-primary rounded-full transform -translate-y-1/2 z-10"></div>
 
                 <div className="bg-card rounded-lg p-6 shadow-lg border border-border hover:shadow-xl transition-shadow">
                   <h3 className="text-xl font-semibold text-primary mb-2">{edu.school}</h3>
                   <p className="text-foreground/90 mb-2">{edu.degree}</p>
                   <p className="text-foreground/70 text-sm">{edu.duration}</p>
-                  {edu.board && (
-                    <p className="text-foreground/70 text-sm mt-2">{edu.board}</p>
+                  {edu.details && (
+                    <p className="text-foreground/70 text-sm mt-2">{edu.details}</p>
                   )}
+                  <p className="text-foreground/60 text-sm mt-3">Languages: English (professional fluency)</p>
                 </div>
               </motion.div>
             ))}

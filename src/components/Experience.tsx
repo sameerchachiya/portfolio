@@ -1,37 +1,64 @@
 import { motion } from 'framer-motion';
+import fciLogo from '../assets/FCI.jpg';
 import verizonLogo from '../assets/verizon.png';
 import oracleLogo from '../assets/oracle.png';
 
-const experiences = [
+interface ExperienceEntry {
+  title: string;
+  company: string;
+  period: string;
+  logo?: string;
+  initials?: string;
+  description: string[];
+}
+
+const experiences: ExperienceEntry[] = [
   {
-    title: 'Software Engineer 2',
-    company: 'Verizon',
-    period: 'Aug 2023 — Present',
-    logo: verizonLogo,
+    title: 'Software Engineer – Senior Associate',
+    company: 'First Citizens India',
+    period: 'Nov 2025 — Present',
+    logo: fciLogo,
     description: [
-      'Primarily contributed to the Fiber Engineering microservice, scaling it to handle peak traffic of 100K+/day (from 40K+/day)',
-      'Revamped real-time fiber visibility functionalities, optimizing thousands of rule evaluations to ensure a 50ms execution time',
-      'Developed and maintained 15+ microservices and full-stack applications using Spring Boot and React.js',
-      'Led a team of 2 developers as a secondary lead, assisting in 5+ code reviews and 2+ key feature deliveries per sprint',
-      'Resolved 50+ UI-related bugs and maintained 10+ backend services, reducing UI load times by 20%',
-      'Migrated an existing application from Angular to React.js, currently 60% complete',
-      'Optimized SQL queries, improving database performance by 30% through referential integrity enforcement'
+      'Primarily building backend systems for cards & payments, focusing on risk evaluation, automated decisioning, and compliance-driven workflows',
+      'Designed risk scoring algorithms improving decision consistency in compliance-driven financial workflows',
+      'Delivering low-latency, high-reliability systems under strict correctness constraints in a regulated environment',
+      'Revamped real-time functionalities, optimising thousands of rules to achieve 50ms execution time',
+      'Integrated internal applications with AI using MCP protocols, enabling services to leverage LLM-powered automation and intelligent workflow orchestration',
+      'Established a secure firewall layer for Generative AI systems with architects, using the application as a POC before scaling across the enterprise',
+      'Optimised LLM token consumption through prompt engineering, context management, and response caching, reducing inference costs while maintaining quality',
     ],
   },
   {
-    title: 'Software Engineer 1',
+    title: 'Software Engineer II — Full Stack AI',
+    company: 'Verizon',
+    period: 'Aug 2023 — Nov 2025',
+    logo: verizonLogo,
+    description: [
+      'Primarily contributed to the Fiber Engineering space, scaling it to handle peak traffic of 100K+/day (from 40K+/day)',
+      'Delivered AI-powered enhancements integrating LLMs (GPT, Claude) and agentic workflows into Java, Spring Boot, Python, and React',
+      'Designed and scaled 15+ microservices handling 100K+ daily requests at sub-50ms latency for production-grade AI inference',
+      'Architected end-to-end RAG pipelines (embedding → vectorDB → retrieval → LLM inference) for context-aware production AI responses',
+      'Led agentic AI adoption — multi-agent workflows for autonomous task execution, increasing sprint throughput by ~3× and reducing debugging/triage effort by ~40%',
+      'Resolved 50+ UI-related bugs and maintained 10+ backend services, resulting in a 20% reduction in UI load times',
+      'Mentored 2 interns on AI integration strategies and microservice design; assisted with 5+ code reviews and 2+ key feature deliveries per sprint',
+      'Improved database query performance by 30% through referential integrity enforcement',
+      'Hackathon Winner: Pioneering data source health application from PoC to deployment, improving anomaly detection accuracy by 30%',
+    ],
+  },
+  {
+    title: 'Software Engineer I',
     company: 'Oracle Cerner',
     period: 'Oct 2021 — Aug 2023',
     logo: oracleLogo,
     description: [
-      'Developed and modified 45+ efficient and secure software apps using Java, Ruby on Rails, Spring Boot, and React JS',
-      'Created and implemented 10+ microservices to seamlessly integrate Kafka into an existing Monolith',
-      'Automated software delivery process with 15+ Java Groovy Scripts, increasing delivery speed by 40%',
-      'Identified and resolved 25+ bottlenecks and bugs, ensuring smooth operation and optimal performance',
-      'Actively participated in 100+ code reviews to ensure code quality and system stability',
-      'Provided Tier 2 support for 8+ applications (break fixes and data changes)',
-      'Containerized applications into Docker images, optimizing server utilization and reducing cloud costs',
-      'Developed 150+ unit test cases and utilized Postman for comprehensive API testing'
+      'Primarily contributed to Healthcare space — developed/modified 45+ secure applications in Java, Spring Boot, and React JS across 5+ cross-functional global teams',
+      'Automated software delivery with 15+ Java Groovy scripts achieving CI/CD, increasing delivery speed by 40%',
+      'Developed 150+ unit test cases; participated in 100+ code reviews ensuring code quality and system stability',
+      'Containerised applications into Docker images, optimising server utilisation and reducing cloud costs',
+      'Provided Tier 1 support for 8+ applications (break fixes and data changes)',
+      'Created 10+ microservices integrating Kafka into an existing Monolith',
+      'Contributed to Angular-to-React migration',
+      'Hackathon Winner: Automated CVE fixes, cutting engineering time from 14 hours to 30 minutes per CVE',
     ],
   },
 ];
@@ -62,7 +89,6 @@ const Experience = () => {
               className="relative pl-8 md:pl-0"
             >
               <div className="md:grid md:grid-cols-12 md:gap-8">
-                {/* Timeline Line */}
                 <div className="hidden md:block md:col-span-3">
                   <div className="sticky top-20 text-right">
                     <span className="text-lg font-semibold text-primary whitespace-nowrap">
@@ -71,21 +97,23 @@ const Experience = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="md:col-span-9">
                   <div className="relative bg-card rounded-lg p-6 shadow-lg border border-border">
-                    {/* Mobile Period */}
                     <div className="md:hidden mb-4 text-primary font-semibold whitespace-nowrap">
                       {exp.period}
                     </div>
 
                     <div className="flex items-center gap-6 mb-6">
-                      <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden bg-white p-2 shadow-sm">
-                        <img 
-                          src={exp.logo} 
-                          alt={`${exp.company} logo`} 
-                          className="w-full h-full object-contain"
-                        />
+                      <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden bg-white p-2 shadow-sm flex items-center justify-center">
+                        {exp.logo ? (
+                          <img
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            className="w-full h-full object-contain"
+                          />
+                        ) : (
+                          <span className="text-2xl font-bold text-primary">{exp.initials}</span>
+                        )}
                       </div>
                       <div>
                         <h3 className="text-xl md:text-2xl font-bold mb-1">{exp.title}</h3>
@@ -112,4 +140,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;
