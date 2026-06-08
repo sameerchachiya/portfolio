@@ -1,67 +1,59 @@
 import { motion } from 'framer-motion';
+import SectionHeader from './SectionHeader';
 
 const hackathons = [
   {
     company: 'Verizon',
     year: '2024',
-    achievement: 'Winner',
+    achievement: '🏆 Winner',
     project: 'Data Source Health & Anomaly Detection',
-    description:
-      'Designed and developed a pioneering application from PoC to deployment, assessing data source health and improving anomaly detection accuracy by 30%',
+    impact: '+30% detection accuracy',
+    description: 'Pioneering application from PoC to deployment assessing data source health across production systems.',
   },
   {
     company: 'Oracle Cerner',
     year: '2022',
-    achievement: 'Winner',
+    achievement: '🏆 Winner',
     project: 'CVE Vulnerability Automation',
-    description:
-      'Automated CVE vulnerability fixes, cutting engineering time from 14 hours to 30 minutes per CVE',
+    impact: '14h → 30min per CVE',
+    description: 'Automated CVE vulnerability fixes, dramatically reducing engineering time and security response lag.',
   },
 ];
 
-const Hackathon = () => {
-  return (
-    <section id="hackathon" className="py-16 md:py-20 bg-secondary/5">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Hackathon Achievements</h2>
-          <p className="text-foreground/70">Consistent hackathon winner — innovation through competitive problem solving</p>
-        </motion.div>
+const Hackathon = () => (
+  <section id="hackathon" className="py-20 md:py-28 bg-secondary/30">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        label="Recognition"
+        title="Hackathon Wins"
+        subtitle="Consistent winner — I ship fast, think creatively, and deliver under pressure."
+      />
 
-        <div className="space-y-8">
-          {hackathons.map((hack, index) => (
-            <motion.div
-              key={`${hack.company}-${hack.year}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="bg-card rounded-lg p-6 shadow-lg border border-border hover:shadow-xl transition-shadow"
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-primary">{hack.project}</h3>
-                  <p className="text-foreground/90">{hack.company} — {hack.year}</p>
-                </div>
-                <div className="mt-2 md:mt-0">
-                  <span className="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">
-                    {hack.achievement}
-                  </span>
-                </div>
+      <div className="grid md:grid-cols-2 gap-6">
+        {hackathons.map((hack, index) => (
+          <motion.div
+            key={hack.project}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
+            <div className="relative">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-2xl">{hack.achievement}</span>
+                <span className="text-xs font-mono text-foreground/40">{hack.company} · {hack.year}</span>
               </div>
-              <p className="text-foreground/70">{hack.description}</p>
-            </motion.div>
-          ))}
-        </div>
+              <h3 className="font-display font-bold text-lg mb-1">{hack.project}</h3>
+              <p className="text-sm font-semibold text-primary mb-3">{hack.impact}</p>
+              <p className="text-sm text-foreground/60 leading-relaxed">{hack.description}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Hackathon;

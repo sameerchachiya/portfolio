@@ -1,142 +1,87 @@
 import { motion } from 'framer-motion';
+import SectionHeader from './SectionHeader';
 
 const openToLocations = [
-  'Bengaluru',
-  'Remote',
-  'UAE',
-  'Dubai',
-  'Abu Dhabi',
-  'Qatar',
-  'Singapore',
-  'Australia',
-  'USA',
-  'UK',
-  'Riyadh',
-  'Beyond',
+  'Bengaluru', 'Remote', 'UAE', 'Dubai', 'Abu Dhabi', 'Qatar',
+  'Singapore', 'Australia', 'USA', 'UK', 'Riyadh', 'Beyond',
 ];
 
 const contactLinks = [
-  {
-    label: 'Email',
-    value: 'sameerchachiya11@gmail.com',
-    href: 'mailto:sameerchachiya11@gmail.com',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      />
-    ),
-  },
-  {
-    label: 'Phone',
-    value: '+91-9741923904',
-    href: 'tel:+919741923904',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-      />
-    ),
-  },
-  {
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/sameerchachiya',
-    href: 'https://linkedin.com/in/sameerchachiya',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-      />
-    ),
-  },
-  {
-    label: 'Website',
-    value: 'sameerchachiya.tech',
-    href: 'https://sameerchachiya.tech',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-      />
-    ),
-  },
+  { label: 'Email', value: 'sameerchachiya11@gmail.com', href: 'mailto:sameerchachiya11@gmail.com' },
+  { label: 'Phone', value: '+91-9741923904', href: 'tel:+919741923904' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/sameerchachiya', href: 'https://linkedin.com/in/sameerchachiya' },
+  { label: 'Website', value: 'sameerchachiya.tech', href: 'https://sameerchachiya.tech' },
 ];
 
-const Contact = () => {
-  return (
-    <section id="contact" className="py-16 md:py-20 bg-secondary/5">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Contact Me</h2>
-          <p className="text-foreground/70 max-w-xl mx-auto text-sm">
-            Open to senior AI / Full Stack / Backend roles worldwide — remote, relocation, and global opportunities welcome.
-          </p>
-        </motion.div>
+const Contact = () => (
+  <section id="contact" className="py-20 md:py-28 bg-secondary/30">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        label="Let's Connect"
+        title="Ready to Build Something Great?"
+        subtitle="I'm actively looking for senior AI, Full Stack, and Backend roles — remote, on-site, or relocation. Let's talk."
+      />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-card rounded-lg p-6 shadow-lg border border-border"
-        >
-          <p className="text-foreground/70 text-sm mb-4 text-center">
-            📍 Based in Bengaluru, India · Open to work globally
-          </p>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
-          <div className="mb-6">
-            <p className="text-xs text-foreground/50 text-center mb-3 uppercase tracking-wide">
-              Open to opportunities in
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {openToLocations.map((location) => (
-                <span
-                  key={location}
-                  className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20"
-                >
-                  {location}
-                </span>
-              ))}
-            </div>
+        <div className="relative">
+          <div className="availability-pulse mx-auto mb-8 w-fit">
+            Open to opportunities worldwide
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <p className="text-foreground/50 text-sm mb-6">
+            📍 Based in Bengaluru, India
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {openToLocations.map((loc) => (
+              <span key={loc} className="skill-pill">{loc}</span>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             {contactLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-3 p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-colors"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-4 rounded-xl border border-border/80 bg-background/50 hover:border-primary/40 hover:bg-primary/5 transition-all text-left group"
               >
-                <svg className="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {link.icon}
-                </svg>
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+                  <span className="text-sm font-bold">{link.label[0]}</span>
+                </div>
                 <div>
-                  <p className="text-xs text-foreground/50">{link.label}</p>
-                  <p className="text-sm text-foreground/80 hover:text-primary">{link.value}</p>
+                  <p className="text-xs text-foreground/40">{link.label}</p>
+                  <p className="text-sm font-medium text-foreground/80 group-hover:text-primary transition-colors">{link.value}</p>
                 </div>
               </a>
             ))}
           </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="mailto:sameerchachiya11@gmail.com" className="btn-primary">
+              Send Me an Email
+            </a>
+            <a
+              href="/projects/SameerChachiya_Resume_FullStack.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
 
 export default Contact;
