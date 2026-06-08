@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import Typed from 'typed.js';
+import profilePhoto from '../assets/sam_pic.png';
 
 const roles = [
   'Full Stack AI Engineer',
@@ -76,9 +77,9 @@ const Hero = () => {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                Download Resume
+                Resume
               </a>
-              <a href="#projects" className="btn-secondary">View Projects</a>
+              <a href="#projects" className="btn-secondary">Projects</a>
             </div>
 
             <div className="flex justify-center lg:justify-start gap-3">
@@ -107,15 +108,15 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="order-1 lg:order-2 flex justify-center"
+            className="order-1 lg:order-2 flex flex-col items-center"
           >
             <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 to-accent/30 blur-3xl scale-110 animate-float" />
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden border-2 border-primary/20 shadow-2xl shadow-primary/10">
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/25 to-accent/25 blur-2xl" />
+              <div className="relative w-[260px] sm:w-[300px] lg:w-[340px] aspect-[585/1024] rounded-[1.75rem] overflow-hidden border border-border/80 shadow-2xl shadow-primary/10 ring-1 ring-primary/10 bg-card">
                 <img
-                  src={new URL('../assets/sam_pic_converted.jpg', import.meta.url).href}
-                  alt="Sameer Chachiya"
-                  className="w-full h-full object-cover"
+                  src={profilePhoto}
+                  alt="Sameer Chachiya — Senior Software Engineer"
+                  className="w-full h-full object-cover object-[50%_18%] scale-[1.02]"
                   onError={() => setImageError(true)}
                 />
                 {imageError && (
@@ -124,10 +125,10 @@ const Hero = () => {
                   </div>
                 )}
               </div>
-              <div className="absolute -bottom-4 -right-4 glass-card rounded-2xl px-4 py-3 shadow-xl">
-                <p className="text-xs text-foreground/50">Currently at</p>
-                <p className="font-display font-bold text-sm text-gradient">First Citizens India</p>
-              </div>
+            </div>
+            <div className="mt-5 glass-card rounded-2xl px-5 py-3 shadow-lg text-center">
+              <p className="text-xs text-foreground/50">Currently at</p>
+              <p className="font-display font-bold text-sm text-gradient">First Citizens India</p>
             </div>
           </motion.div>
         </div>
