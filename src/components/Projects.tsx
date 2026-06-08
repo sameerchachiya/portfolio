@@ -17,7 +17,7 @@ const projects: Project[] = [
     description: 'Upload production logs → AI returns root cause, potential cause, and solution using vector search + LLM inference.',
     technologies: ['Python', 'Vector Search', 'LLM', 'RAG', 'LangChain'],
     highlights: ['Semantic log retrieval pipeline', 'Intelligent root cause analysis', 'Production-ready AI diagnostics'],
-    image: '/projects/ai-log-analyser.png',
+    image: '/projects/portfolio.png',
     featured: true,
   },
   {
@@ -47,7 +47,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={`project-card group ${project.featured ? 'lg:col-span-2' : ''}`}
     >
-      <div className={`relative overflow-hidden bg-muted ${project.featured ? 'aspect-[21/9]' : 'aspect-video'}`}>
+      <div className={`relative overflow-hidden bg-muted ${project.featured ? 'aspect-[16/9] lg:aspect-[21/9]' : 'aspect-video'}`}>
         {!imageError ? (
           <img
             src={project.image}
@@ -57,18 +57,18 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-primary/10 to-accent/10">
-            <span className="text-4xl">⚡</span>
+            <span className="text-4xl font-display font-black text-primary">SC</span>
             <span className="text-sm text-foreground/40 font-mono">{project.title}</span>
           </div>
         )}
         {project.featured && (
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-primary text-white shadow-lg">
+          <div className="absolute top-4 left-4 px-3 py-1 rounded-md text-xs font-semibold bg-primary text-white shadow-lg">
             Featured
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/10 to-transparent opacity-90" />
         <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="font-display font-bold text-xl text-white drop-shadow-lg">{project.title}</h3>
+          <h3 className="font-display font-bold text-xl text-foreground drop-shadow-lg">{project.title}</h3>
         </div>
       </div>
 

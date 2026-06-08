@@ -85,9 +85,9 @@ const Experience = () => (
             >
               <div className="timeline-dot hidden md:block top-8" />
 
-              <motion.div whileHover={{ x: 4 }} className="glass-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+              <motion.div whileHover={{ x: 4 }} className="glass-card p-6 md:p-8 transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-5">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden bg-white p-1.5 shadow-sm border border-border flex items-center justify-center">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden bg-white p-1.5 shadow-sm border border-border flex items-center justify-center">
                     {exp.logo ? (
                       <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
                     ) : (
@@ -100,7 +100,7 @@ const Experience = () => (
                         <h3 className="font-display font-bold text-lg md:text-xl">{exp.title}</h3>
                         <p className="text-primary font-medium">{exp.company}</p>
                       </div>
-                      <span className="text-xs font-mono text-foreground/50 bg-muted px-3 py-1 rounded-full whitespace-nowrap">
+                      <span className="text-xs font-mono text-foreground/50 bg-muted px-3 py-1 rounded-md whitespace-nowrap">
                         {exp.period}
                       </span>
                     </div>

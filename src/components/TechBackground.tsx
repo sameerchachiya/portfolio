@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
-const orbs = [
-  { color: 'bg-primary/20', size: 'w-[500px] h-[500px]', x: '10%', y: '5%', delay: 0 },
-  { color: 'bg-accent/15', size: 'w-[400px] h-[400px]', x: '70%', y: '60%', delay: 2 },
-  { color: 'bg-purple-500/10', size: 'w-[350px] h-[350px]', x: '50%', y: '30%', delay: 4 },
+const traces = [
+  { top: '18%', width: '36%', delay: 0 },
+  { top: '48%', width: '28%', delay: 1.8 },
+  { top: '72%', width: '42%', delay: 3.2 },
 ];
 
 const TechBackground = () => (
@@ -11,17 +11,16 @@ const TechBackground = () => (
     <div className="cyber-grid" />
     <div className="scanline" />
 
-    {orbs.map((orb, i) => (
+    {traces.map((trace, i) => (
       <motion.div
         key={i}
-        className={`absolute rounded-full blur-[100px] ${orb.color} ${orb.size}`}
-        style={{ left: orb.x, top: orb.y }}
+        className="absolute right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        style={{ top: trace.top, width: trace.width }}
         animate={{
-          x: [0, 40, -20, 0],
-          y: [0, -30, 20, 0],
-          scale: [1, 1.1, 0.95, 1],
+          x: ['30%', '-120%'],
+          opacity: [0, 1, 0],
         }}
-        transition={{ duration: 18 + i * 4, repeat: Infinity, ease: 'easeInOut', delay: orb.delay }}
+        transition={{ duration: 9 + i * 2, repeat: Infinity, ease: 'easeInOut', delay: trace.delay }}
       />
     ))}
 

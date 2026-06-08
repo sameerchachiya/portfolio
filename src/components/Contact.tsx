@@ -27,7 +27,7 @@ const Contact = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+        className="glass-card p-8 md:p-12 text-center relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
@@ -37,7 +37,7 @@ const Contact = () => (
           </div>
 
           <p className="text-foreground/50 text-sm mb-6">
-            📍 Based in Bengaluru, India
+            Based in Bengaluru, India
           </p>
 
           <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -53,9 +53,9 @@ const Contact = () => (
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-xl border border-border/80 bg-background/50 hover:border-primary/40 hover:bg-primary/5 transition-all text-left group"
+                className="flex items-center gap-3 p-4 rounded-lg border border-border/80 bg-background/50 hover:border-primary/40 hover:bg-primary/5 transition-all text-left group"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+                <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
                   <span className="text-sm font-bold">{link.label[0]}</span>
                 </div>
                 <div>

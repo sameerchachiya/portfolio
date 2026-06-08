@@ -33,6 +33,12 @@ const codeLines = [
   { prompt: '>', text: 'status: open_to_work(global)', delay: 1.2 },
 ];
 
+const proofPoints = [
+  { value: '100K+', label: 'daily requests' },
+  { value: '<50ms', label: 'service latency' },
+  { value: '5 yrs', label: 'enterprise delivery' },
+];
+
 const Hero = () => {
   const [imageError, setImageError] = useState(false);
   const roleRef = useRef(null);
@@ -50,9 +56,9 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 pb-12">
+    <section id="home" className="relative min-h-screen flex items-center pt-24 pb-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[1.08fr_0.92fr] gap-12 lg:gap-16 items-center">
           <motion.div
             variants={container}
             initial="hidden"
@@ -60,27 +66,39 @@ const Hero = () => {
             className="order-2 lg:order-1"
           >
             <motion.div variants={item} className="availability-pulse mb-6 w-fit mx-auto lg:mx-0">
-              Available for hire — Global · Remote · Relocation
+              Available for hire - Global, remote, relocation
             </motion.div>
 
-            <motion.h1 variants={item} className="text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tight text-center lg:text-left mb-4">
-              Hi, I'm{' '}
-              <span className="text-gradient-warm">Sameer</span>
+            <motion.p variants={item} className="text-sm font-mono uppercase tracking-[0.18em] text-muted-foreground mb-3 text-center lg:text-left">
+              Full Stack AI Engineer
+            </motion.p>
+
+            <motion.h1 variants={item} className="text-5xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-center lg:text-left mb-5 leading-[0.95]">
+              <span className="text-gradient-warm">Sameer Chachiya</span>
               <br />
-              <span className="text-gradient-warm">Chachiya</span>
+              <span className="text-foreground">builds reliable AI systems.</span>
             </motion.h1>
 
-            <motion.div variants={item} className="text-lg md:text-xl mb-6 text-center lg:text-left h-8 font-mono">
+            <motion.div variants={item} className="text-lg md:text-xl mb-6 text-center lg:text-left min-h-8 font-mono">
               <span className="text-accent/70">&gt; </span>
               <span ref={roleRef} className="text-primary font-semibold" />
             </motion.div>
 
-            <motion.p variants={item} className="text-muted-foreground leading-relaxed mb-6 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-              I build production-grade AI systems that enterprises trust — agentic workflows,
-              RAG pipelines, and sub-50ms microservices at 100K+ req/day scale.
+            <motion.p variants={item} className="text-muted-foreground leading-relaxed mb-6 text-center lg:text-left max-w-2xl mx-auto lg:mx-0 text-base md:text-lg">
+              I turn RAG pipelines, agentic workflows,
+              and low-latency microservices into reliable enterprise products.
             </motion.p>
 
-            <motion.div variants={item} className="terminal-block mb-8 max-w-md mx-auto lg:mx-0 hidden sm:block">
+            <motion.div variants={item} className="grid grid-cols-3 gap-2 mb-7 max-w-xl mx-auto lg:mx-0">
+              {proofPoints.map((point) => (
+                <div key={point.label} className="glass-card p-3 text-center lg:text-left">
+                  <div className="font-display text-xl md:text-2xl font-black text-gradient">{point.value}</div>
+                  <div className="text-[11px] md:text-xs text-muted-foreground font-mono">{point.label}</div>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div variants={item} className="terminal-block mb-8 max-w-lg mx-auto lg:mx-0 hidden sm:block">
               {codeLines.map((line, i) => (
                 <motion.div
                   key={i}
@@ -108,7 +126,7 @@ const Hero = () => {
                 </svg>
               </a>
               <a href="/projects/SameerChachiya_Resume_FullStack.pdf" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                Resume
+                View Resume
               </a>
               <a href="#projects" className="btn-secondary">Projects</a>
             </motion.div>
@@ -144,15 +162,16 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.85, rotateY: -10 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="order-1 lg:order-2 flex flex-col items-center"
+              className="order-1 lg:order-2 flex flex-col items-center lg:items-end"
           >
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative"
+              className="relative w-full max-w-[360px]"
             >
-              <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-primary/30 via-accent/20 to-purple-500/20 blur-3xl opacity-70" />
-              <div className="neon-ring relative w-[260px] sm:w-[300px] lg:w-[320px] aspect-[585/1024] rounded-[1.75rem] overflow-hidden shadow-2xl">
+              <div className="absolute -left-5 -top-5 h-24 w-24 border-l border-t border-primary/40" />
+              <div className="absolute -right-5 -bottom-5 h-24 w-24 border-r border-b border-accent/40" />
+              <div className="neon-ring relative w-[260px] sm:w-[320px] lg:w-[350px] aspect-[585/1024] rounded-lg overflow-hidden shadow-2xl bg-card">
                 <img
                   src={profilePhoto}
                   alt="Sameer Chachiya"
@@ -171,7 +190,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
-              className="mt-6 glass-card rounded-2xl px-6 py-3 text-center"
+              className="mt-5 glass-card px-5 py-3 text-center w-[260px] sm:w-[320px] lg:w-[350px]"
             >
               <p className="text-xs font-mono text-muted-foreground">// currently_at</p>
               <p className="font-display font-bold text-sm text-gradient">First Citizens India</p>

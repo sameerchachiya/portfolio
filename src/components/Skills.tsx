@@ -48,7 +48,7 @@ const Skills = () => (
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
             whileHover={{ y: -4 }}
-            className={`glass-card rounded-2xl p-6 transition-all duration-300 ${
+            className={`glass-card p-6 transition-all duration-300 ${
               group.highlight ? 'md:col-span-2 lg:col-span-1 ring-1 ring-primary/20' : ''
             }`}
           >
