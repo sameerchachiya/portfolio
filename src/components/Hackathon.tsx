@@ -21,8 +21,9 @@ const hackathons = [
 ];
 
 const Hackathon = () => (
-  <section id="hackathon" className="py-20 md:py-28 bg-secondary/30">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="hackathon" className="py-20 md:py-28 relative">
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent pointer-events-none" />
+    <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         label="Recognition"
         title="Hackathon Wins"
@@ -37,7 +38,8 @@ const Hackathon = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
-            className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group"
+            whileHover={{ y: -6, scale: 1.02 }}
+            className="glass-card rounded-2xl p-6 transition-all duration-300 relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
             <div className="relative">

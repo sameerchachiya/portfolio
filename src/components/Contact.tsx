@@ -14,8 +14,9 @@ const contactLinks = [
 ];
 
 const Contact = () => (
-  <section id="contact" className="py-20 md:py-28 bg-secondary/30">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="contact" className="py-20 md:py-28 relative">
+    <div className="absolute inset-0 bg-gradient-to-t from-primary/8 via-transparent to-transparent pointer-events-none" />
+    <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         label="Let's Connect"
         title="Ready to Build Something Great?"

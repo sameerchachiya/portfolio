@@ -16,6 +16,23 @@ const socialLinks = [
   { label: 'Email', href: 'mailto:sameerchachiya11@gmail.com', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', stroke: true },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const codeLines = [
+  { prompt: '$', text: 'whoami', delay: 0 },
+  { prompt: '>', text: 'sameer_chachiya.engineer()', delay: 0.4 },
+  { prompt: '>', text: 'stack: [AI, Java, Python, React]', delay: 0.8 },
+  { prompt: '>', text: 'status: open_to_work(global)', delay: 1.2 },
+];
+
 const Hero = () => {
   const [imageError, setImageError] = useState(false);
   const roleRef = useRef(null);
@@ -23,11 +40,11 @@ const Hero = () => {
   useEffect(() => {
     const typed = new Typed(roleRef.current, {
       strings: roles,
-      typeSpeed: 45,
-      backSpeed: 30,
-      backDelay: 2000,
+      typeSpeed: 50,
+      backSpeed: 35,
+      backDelay: 2200,
       loop: true,
-      cursorChar: '|',
+      cursorChar: '▋',
     });
     return () => typed.destroy();
   }, []);
@@ -37,36 +54,53 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            variants={container}
+            initial="hidden"
+            animate="show"
             className="order-2 lg:order-1"
           >
-            <div className="availability-pulse mb-6 w-fit mx-auto lg:mx-0">
+            <motion.div variants={item} className="availability-pulse mb-6 w-fit mx-auto lg:mx-0">
               Available for hire — Global · Remote · Relocation
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight text-center lg:text-left mb-4">
+            <motion.h1 variants={item} className="text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tight text-center lg:text-left mb-4">
               Hi, I'm{' '}
               <span className="text-gradient-warm">Sameer</span>
               <br />
               <span className="text-gradient-warm">Chachiya</span>
-            </h1>
+            </motion.h1>
 
-            <div className="text-lg md:text-xl text-foreground/70 mb-6 text-center lg:text-left h-8">
+            <motion.div variants={item} className="text-lg md:text-xl mb-6 text-center lg:text-left h-8 font-mono">
+              <span className="text-accent/70">&gt; </span>
               <span ref={roleRef} className="text-primary font-semibold" />
-            </div>
+            </motion.div>
 
-            <p className="text-foreground/60 leading-relaxed mb-4 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-              I build production-grade AI systems that enterprises trust — from agentic workflows
-              and RAG pipelines to sub-50ms microservices handling 100K+ daily requests.
-            </p>
+            <motion.p variants={item} className="text-muted-foreground leading-relaxed mb-6 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
+              I build production-grade AI systems that enterprises trust — agentic workflows,
+              RAG pipelines, and sub-50ms microservices at 100K+ req/day scale.
+            </motion.p>
 
-            <p className="text-sm text-foreground/50 mb-8 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-              📍 Bengaluru, India · Open worldwide — UAE, Dubai, Singapore, USA, UK, Australia & beyond
-            </p>
+            <motion.div variants={item} className="terminal-block mb-8 max-w-md mx-auto lg:mx-0 hidden sm:block">
+              {codeLines.map((line, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.5 + line.delay, duration: 0.4 }}
+                  className="flex gap-2 mb-1 last:mb-0"
+                >
+                  <span className="text-accent shrink-0">{line.prompt}</span>
+                  <span className="text-foreground/70">{line.text}</span>
+                </motion.div>
+              ))}
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="inline-block w-2 h-4 bg-accent mt-1 ml-4"
+              />
+            </motion.div>
 
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+            <motion.div variants={item} className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
               <a href="#contact" className="btn-primary">
                 Let's Work Together
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,23 +108,25 @@ const Hero = () => {
                 </svg>
               </a>
               <a href="/projects/SameerChachiya_Resume_FullStack.pdf" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
                 Resume
               </a>
               <a href="#projects" className="btn-secondary">Projects</a>
-            </div>
+            </motion.div>
 
-            <div className="flex justify-center lg:justify-start gap-3">
-              {socialLinks.map((link) => (
-                <a
+            <motion.div variants={item} className="flex justify-center lg:justify-start gap-3">
+              {socialLinks.map((link, i) => (
+                <motion.a
                   key={link.label}
                   href={link.href}
                   target={link.href.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-all"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.8 + i * 0.1, type: 'spring', stiffness: 200 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-5 h-5" fill={link.stroke ? 'none' : 'currentColor'} stroke={link.stroke ? 'currentColor' : undefined} viewBox="0 0 24 24">
                     {link.stroke ? (
@@ -99,37 +135,47 @@ const Hero = () => {
                       <path fillRule="evenodd" d={link.icon} clipRule="evenodd" />
                     )}
                   </svg>
-                </a>
+                </motion.a>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.85, rotateY: -10 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="order-1 lg:order-2 flex flex-col items-center"
           >
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/25 to-accent/25 blur-2xl" />
-              <div className="relative w-[260px] sm:w-[300px] lg:w-[340px] aspect-[585/1024] rounded-[1.75rem] overflow-hidden border border-border/80 shadow-2xl shadow-primary/10 ring-1 ring-primary/10 bg-card">
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              className="relative"
+            >
+              <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-primary/30 via-accent/20 to-purple-500/20 blur-3xl opacity-70" />
+              <div className="neon-ring relative w-[260px] sm:w-[300px] lg:w-[320px] aspect-[585/1024] rounded-[1.75rem] overflow-hidden shadow-2xl">
                 <img
                   src={profilePhoto}
-                  alt="Sameer Chachiya — Senior Software Engineer"
-                  className="w-full h-full object-cover object-[50%_18%] scale-[1.02]"
+                  alt="Sameer Chachiya"
+                  className="relative z-10 w-full h-full object-cover object-[50%_18%]"
                   onError={() => setImageError(true)}
                 />
                 {imageError && (
-                  <div className="w-full h-full bg-muted flex items-center justify-center text-sm text-muted-foreground">
+                  <div className="relative z-10 w-full h-full bg-muted flex items-center justify-center text-sm">
                     Photo unavailable
                   </div>
                 )}
               </div>
-            </div>
-            <div className="mt-5 glass-card rounded-2xl px-5 py-3 shadow-lg text-center">
-              <p className="text-xs text-foreground/50">Currently at</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2 }}
+              className="mt-6 glass-card rounded-2xl px-6 py-3 text-center"
+            >
+              <p className="text-xs font-mono text-muted-foreground">// currently_at</p>
               <p className="font-display font-bold text-sm text-gradient">First Citizens India</p>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

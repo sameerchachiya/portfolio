@@ -30,8 +30,9 @@ const skills = [
 ];
 
 const Skills = () => (
-  <section id="skills" className="py-20 md:py-28 bg-secondary/30">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="skills" className="py-20 md:py-28 relative">
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+    <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
         label="Expertise"
         title="Skills That Ship"
@@ -46,7 +47,8 @@ const Skills = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
-            className={`glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 ${
+            whileHover={{ y: -4 }}
+            className={`glass-card rounded-2xl p-6 transition-all duration-300 ${
               group.highlight ? 'md:col-span-2 lg:col-span-1 ring-1 ring-primary/20' : ''
             }`}
           >

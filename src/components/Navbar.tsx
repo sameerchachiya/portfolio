@@ -29,33 +29,44 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 glass-nav transition-all duration-300 ${scrolled ? 'scrolled' : ''}`}>
+    <motion.nav
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed w-full z-50 glass-nav transition-all duration-300 ${scrolled ? 'scrolled' : ''}`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#home" className="font-display font-bold text-xl text-gradient">
-            SC
+          <a href="#home" className="font-display font-black text-xl text-gradient tracking-tight">
+            {'<SC />'}
           </a>
 
           <div className="hidden md:flex items-center gap-1">
             {menuItems.map((item) => (
-              <a
+              <motion.a
                 key={item.title}
                 href={item.href}
                 target={item.external ? '_blank' : undefined}
                 rel={item.external ? 'noopener noreferrer' : undefined}
-                className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-primary rounded-lg hover:bg-primary/5 transition-colors"
+                whileHover={{ y: -1 }}
+                className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent rounded-lg hover:bg-primary/5 transition-colors font-mono"
               >
                 {item.title}
-              </a>
+              </motion.a>
             ))}
             <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-primary/10 transition-colors ml-1" aria-label="Toggle theme">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-muted-foreground">
                 <ThemeIcon theme={theme} />
               </svg>
             </button>
-            <a href="#contact" className="btn-primary !py-2 !px-4 !text-sm ml-2">
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="btn-primary !py-2 !px-4 !text-sm ml-2"
+            >
               Hire Me
-            </a>
+            </motion.a>
           </div>
 
           <div className="md:hidden flex items-center gap-2">
@@ -83,20 +94,23 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border/60 bg-background/95 backdrop-blur-xl overflow-hidden"
+            className="md:hidden border-t border-primary/10 bg-background/95 backdrop-blur-2xl overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1">
-              {menuItems.map((item) => (
-                <a
+              {menuItems.map((item, i) => (
+                <motion.a
                   key={item.title}
                   href={item.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
                   onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 rounded-lg text-foreground/80 hover:bg-primary/5 hover:text-primary font-medium"
+                  className="block px-4 py-3 rounded-lg font-mono text-muted-foreground hover:bg-primary/5 hover:text-accent"
                 >
                   {item.title}
-                </a>
+                </motion.a>
               ))}
               <a href="#contact" onClick={() => setIsOpen(false)} className="block btn-primary text-center mt-2">
                 Hire Me
@@ -105,7 +119,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 

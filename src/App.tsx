@@ -1,4 +1,5 @@
 import { ThemeProvider } from './context/ThemeContext';
+import TechBackground from './components/TechBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
@@ -14,12 +15,12 @@ function App() {
   return (
     <ThemeProvider>
       <div className="relative min-h-screen text-foreground overflow-x-hidden">
-        <div className="mesh-bg" aria-hidden="true" />
-        <div className="grid-pattern" aria-hidden="true" />
+        <TechBackground />
         <div className="relative z-10">
           <Navbar />
           <main>
             <Hero />
+            <div className="glow-line max-w-4xl mx-auto opacity-60" />
             <Stats />
             <Experience />
             <Skills />
