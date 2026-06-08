@@ -1,5 +1,20 @@
 import { motion } from 'framer-motion';
 
+const openToLocations = [
+  'Bengaluru',
+  'Remote',
+  'UAE',
+  'Dubai',
+  'Abu Dhabi',
+  'Qatar',
+  'Singapore',
+  'Australia',
+  'USA',
+  'UK',
+  'Riyadh',
+  'Beyond',
+];
+
 const contactLinks = [
   {
     label: 'Email',
@@ -67,8 +82,8 @@ const Contact = () => {
           className="text-center mb-8"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Contact Me</h2>
-          <p className="text-foreground/70 max-w-md mx-auto text-sm">
-            Open to senior AI / Full Stack / Backend roles in Bengaluru · Remote
+          <p className="text-foreground/70 max-w-xl mx-auto text-sm">
+            Open to senior AI / Full Stack / Backend roles worldwide — remote, relocation, and global opportunities welcome.
           </p>
         </motion.div>
 
@@ -79,9 +94,25 @@ const Contact = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="bg-card rounded-lg p-6 shadow-lg border border-border"
         >
-          <p className="text-foreground/70 text-sm mb-6 text-center">
-            📍 Bengaluru, India
+          <p className="text-foreground/70 text-sm mb-4 text-center">
+            📍 Based in Bengaluru, India · Open to work globally
           </p>
+
+          <div className="mb-6">
+            <p className="text-xs text-foreground/50 text-center mb-3 uppercase tracking-wide">
+              Open to opportunities in
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {openToLocations.map((location) => (
+                <span
+                  key={location}
+                  className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20"
+                >
+                  {location}
+                </span>
+              ))}
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {contactLinks.map((link) => (

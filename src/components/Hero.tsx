@@ -70,9 +70,13 @@ const Hero = () => {
                 optimising performance, and building agentic AI systems for global enterprises. Proven ability to
                 bridge cutting-edge AI capabilities with enterprise-grade Java/Spring Boot, Python, and React architectures.
               </p>
-              <p className="text-sm md:text-base text-foreground/60 max-w-2xl leading-relaxed">
+              <p className="text-sm md:text-base text-foreground/60 max-w-2xl leading-relaxed mb-3">
                 Consistent hackathon winner with a track record of streamlining workflows, reducing overhead, and
-                delivering high-quality solutions. Open to senior AI / Full Stack / Backend roles in Bengaluru · Remote.
+                delivering high-quality solutions.
+              </p>
+              <p className="text-sm md:text-base text-foreground/60 max-w-2xl leading-relaxed">
+                Open to senior AI / Full Stack / Backend roles globally — Bengaluru, remote, relocation, and
+                opportunities across UAE, Dubai, Abu Dhabi, Qatar, Singapore, Australia, USA, UK, Riyadh, and beyond.
               </p>
             </motion.div>
 
